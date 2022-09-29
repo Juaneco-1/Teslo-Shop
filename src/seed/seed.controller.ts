@@ -1,4 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { ValidRoles } from 'src/auth/interfaces/validRoles';
 import { SeedService } from './seed.service';
 
 
@@ -9,6 +11,7 @@ export class SeedController {
   
 
   @Get()
+  /* @Auth(ValidRoles.admin) */
   executeSeed() {
     return this.seedService.runSeed();
   }
